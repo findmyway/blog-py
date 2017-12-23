@@ -1,7 +1,3 @@
----
-abc: 123
----
-
 # Why this repo?
 
 [About This Site](http://tianjun.me/essays/54)
