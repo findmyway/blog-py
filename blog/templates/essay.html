@@ -1,0 +1,93 @@
+{% extends "base.html" %} 
+
+{% block slogan %}
+{% if slogan is defined %}
+{{slogan}}
+{% else %}
+Fight For Dream!
+{% endif %}
+{% endblock %}
+
+{% block page_title %}
+<title>
+{% if page_title is defined %}
+{{ page_title }}
+{% else %}
+{{ doc.title }}
+{% endif %}
+</title>
+{% endblock %}
+
+{% block content %}
+<div class="post">
+    <h1 class="post-title">
+        <a href="{{ url_for('gen_essay', title=doc.title) }}">{{doc.title}}</a>
+    </h1>
+    <div class="post-time">
+        <br>
+        <p class="small">Tags:
+            <span class="glyphicon glyphicon-tags"></span>
+            <span class="blog-tags">
+                {% for tag in doc.tags.split(',') %}
+                <a href="{{ url_for('search', tag=tag) }}">{{tag}}</a>
+                {{ "," if not loop.last }} {% endfor %}
+            </span>
+        </p>
+        <p class="small">Update Time:
+            <span class="glyphicon glyphicon-calendar"></span>
+            <span class="update-time">{{doc.update_time}}</span>
+        </p>
+    </div>
+    <div class="post-content">
+        {{doc.body|safe}}
+    </div>
+    <div class="post-time">
+        <br>
+        <p class="small">Create Time:
+            <span class="glyphicon glyphicon-calendar"></span>
+            <span class="create-time">{{doc.create_time}}</span>
+        </p>
+    </div>
+</div>
+{% endblock %}
+
+{% block toc %}
+<div class="sidebar-container">
+    <h1>TOC</h1>
+    {{doc.toc|safe}}
+</div>
+{% endblock %}
+
+{% block all_titles %}
+<div class="sidebar-container icons">
+    <h1>Archives</h1>
+    <ul>
+        {% for t in doc.all_titles %}
+        <li><a href="{{ url_for('gen_essay', title=t) }}">{{t}}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
+
+{% block all_tags %}
+<div class="sidebar-container icons">
+    <h1>Tags</h1>
+    <ul>
+        {% for tag, n in doc.all_tags %}
+        <li><a href="{{ url_for('search', tag=tag) }}">{{tag}}</a><span class="badge">{{n}}</span></li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
+
+
+{% block resources %}
+<div class="sidebar-container icons">
+    <h1>Resources</h1>
+    <ul>
+        {% for name, url in resources %}
+        <li><a href="{{ url }}">{{name}}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

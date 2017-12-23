@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    {% block page_title %}<title> Tian Jun </title>{% endblock %}
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8">
+    <meta name="keywords" content="田俊,tianjun,python,machine learning,机器学习,data mining,数据挖掘,natural language processing,NLP,自然语言处理">
+    <meta name="description" content="田俊，关注机器学习(machine learning)、数据挖掘(machine learning)、自然语言处理(natural language processing, NLP)等领域">
+    <meta name="author" content="Tian Jun">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='site_resources/img/favicon.ico') }}">
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='site_resources/css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='site_resources/css/prism.css') }}">
+
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script type="text/x-mathjax-config"> MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "AMS" } } }); </script>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="blog-header row">
+            <div class="col-xs-12 col-md-3">
+                <div id="blog-title">Tian Jun</div>
+            </div>
+            <div class="col-xs-12 col-md-9">
+                <div id="blog-slogan">
+                    {% block slogan %}
+                    Fight For Dream!
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+
+        <div class="blog-nav row">
+            <div class="col-xs-3 col-xs-offset-3 col-md-1 col-md-offset-9">
+                <a href="{{ url_for('home') }}" {% if activate=="essays" %} class="active" {% endif %}>Essays</a>
+            </div>
+            <div class="col-xs-3 col-md-1">
+                <a href="{{ url_for('about') }}" {% if activate=="about" %} class="active" {% endif %}>About</a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="main col-xs-12 col-md-9">
+                <div class="content">
+                    {% block content %} {% endblock %}
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="sidebar col-xs-12 col-md-3">
+                {% block toc %} {% endblock %}
+                {% block resources %} {% endblock %}
+                <div class="sidebar-container text-center">
+                    <p>
+                        <a href="{{ url_for('static', filename='site_resources/img/wechat.jpg') }}" class="fa fa-2x fa-weixin"></a>
+                        <a href="https://github.com/findmyway" class="fa fa-2x fa-github"></a>
+                        <a href="https://www.linkedin.com/in/findmyway" class="fa fa-2x fa-linkedin"></a>
+                        <a href="/rss" class="fa fa-2x fa-rss-square"></a>
+                    </p>
+                </div>
+                <div class="sidebar-container">
+                    <h1>Blogroll</h1>
+                    <p>
+                        <a href="https://laike9m.com/">laike9m</a>
+                        <span>左兄写的文档是我等学习的典范~</span>
+                    </p>
+                </div>
+                {% block all_titles %} {% endblock %}
+                {% block all_tags %} {% endblock %}
+            </div>
+        </div>
+
+        <div id="footer" class="row">
+            <div class="col-xs-12 col-md-9">
+                <br> This work by Tian Jun is licensed under a
+                <br>
+                <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+                <br>
+                <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">
+                    <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png">
+                </a>
+                <script type="text/javascript">
+                    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+                    document.write(unescape("%3Cspan id='cnzz_stat_icon_1000145578'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1000145578%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+                </script>
+            </div>
+        </div>
+
+    </div>
+
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/javascript" async src="{{ url_for('static', filename='site_resources/js/prism.js') }}"></script>
+</body>
+
+</html>

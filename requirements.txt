@@ -1,0 +1,5 @@
+flask
+watchdog
+pypandoc
+beautifulsoup4
+redis

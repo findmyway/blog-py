@@ -1,0 +1,10 @@
+{% extends "base.html" %} 
+
+{% block content %}
+<h1>Tag: {{tag}}</h1>
+<ul> 
+    {% for link  in links %}
+    <li><a href="{{ url_for('gen_essay', title=link) }}">{{link}}</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}
