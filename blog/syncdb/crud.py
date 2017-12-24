@@ -43,7 +43,8 @@ def tag_links_key_wrapper(tag):
 
 
 def get_all_titles():
-    return [t.decode() for t in r.zrevrange(ALL_ESSAYS_KEY, 0, -1)]
+    return [' '.join(t.decode().split('_'))
+            for t in r.zrevrange(ALL_ESSAYS_KEY, 0, -1)]
 
 
 def get_tags(title):
@@ -72,7 +73,7 @@ def get_essay(title):
     doc = {k.decode(): v.decode() for k, v in
            r.hgetall(essay_key_wrapper(title)).items()}
     if doc:
-        doc['title'] = title
+        doc['title'] = ' '.join(title.split('_'))
         doc['all_titles'] = get_all_titles()
         doc['all_tags'] = get_tags_count()
         return doc

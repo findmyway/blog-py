@@ -1,0 +1,21 @@
+OLD_TITLES = {
+    '123': 'The_Past_Year_at_DidiChuxing',
+    '122': 'Notes_on_Machine_Learning_A_Bayesian_and_Optimization_Perspective',
+    '121': 'Understanding_Variational_Autoencoder',
+    '120': 'The_EM_Algorithm',
+    '119': 'Notes_on_Statistical_Rethinking',
+    '117': 'Write_Python_in_Lisp',
+    '108': 'All_About_Zipper',
+    '107': 'Notes_on_CS3110',
+    '54': 'About_This_Site',
+    '61': 'About_Recent',
+    '105': 'Some_Thoughts_Recently',
+    '102': 'Introduction_to_Deep_Learning_Libraries',
+    '63': 'Understand_Buddy_in_Clojure',
+    '57': 'Throwing_Eggs_from_a_Building',
+    '55': 'Data_Science_London_Scikit-Learn',
+    '58': '[6]_Learn_Python_Together_Data_Structure',
+    '29': 'CUDA_in_One_Picture',
+    '26': 'Oneday_Out_of_School',
+    '24': '[4]_Learn_Python_Together_Basic'
+}

@@ -2,6 +2,7 @@ from . import app
 from flask import render_template, request, redirect, abort
 from .syncdb import get_essay, get_all_titles, get_tag_links
 from .models import get_resources_url_path, random_slogan
+from .backward import OLD_TITLES
 
 
 @app.route('/')
@@ -21,6 +22,8 @@ def home():
 
 @app.route('/essays/<title>')
 def gen_essay(title):
+    if title in OLD_TITLES:
+        return redirect('/essays/' + OLD_TITLES[title], 301)
     doc = get_essay(title)
     if not doc:
         abort(404)
