@@ -30,7 +30,7 @@ def parse_html(filepath):
     """Parse the rendered html and return a map"""
     title = os.path.basename(os.path.dirname(filepath))
 
-    with open(filepath) as fp:
+    with open(filepath, encoding='utf8') as fp:
         soup = BeautifulSoup(fp)
 
     toc_elm = soup.find(id="TOC")
