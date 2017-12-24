@@ -63,7 +63,7 @@ Fight For Dream!
     <h1>Archives</h1>
     <ul>
         {% for t in doc.all_titles %}
-        <li><a href="{{ url_for('gen_essay', title=t) }}">{{t}}</a></li>
+        <li><a href="{{ url_for('gen_essay', title=t) }}">{{' '.join(t.split('_'))}}</a></li>
         {% endfor %}
     </ul>
 </div>
