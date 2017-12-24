@@ -4,13 +4,27 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "html",
+            "label": "generate html",
             "type": "shell",
             "windows": {
                 "command": "pandoc '${file}' --toc --mathjax --no-highlight --standalone -f markdown+emoji -o '${fileDirname}\\${fileBasenameNoExtension}.html'"
             },
             "linux": {
                 "command": "pandoc '${file}' --toc --mathjax --no-highlight --standalone -f markdown+emoji -o '${fileDirname}/${fileBasenameNoExtension}.html'"
+            },
+            "presentation": {
+                "reveal": "always"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "push to server",
+            "type": "shell",
+            "windows": {
+                "command": "scp '${file}' deploy@tianjun.me:/home/deploy/blog-py/${relativeFile}",
+            },
+            "linux": {
+                "command": "scp '${file}' deploy@tianjun.me:/home/deploy/blog-py/${relativeFile}",
             },
             "presentation": {
                 "reveal": "always"
