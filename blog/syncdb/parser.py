@@ -2,6 +2,7 @@ import os
 from bs4 import BeautifulSoup
 
 IMG_URL_PREFIX = '/static/essay_resources'
+KNOWN_LANGS = ['python', 'julia']
 
 
 def refactor_code(soup):
@@ -12,8 +13,10 @@ def refactor_code(soup):
     `<pre class="language-python">`
     """
     for s in soup.find_all('pre'):
-        if s.code:
-            s['class'] = ['language-' + s['class'][0]]
+        if s.code and 'class' in s.attrs:
+            s['class'] = ['language-' + x
+                          if x in KNOWN_LANGS else x
+                          for x in s['class']]
 
 
 def refactor_img_url(soup, title):
