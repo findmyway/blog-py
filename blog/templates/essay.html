@@ -21,7 +21,7 @@ Fight For Dream!
 {% block content %}
 <div class="post">
     <h1 class="post-title">
-        <a href="{{ url_for('gen_essay', title=doc.title) }}">{{doc.title}}</a>
+        <a href="{{ url_for('gen_essay', title=doc.title) }}">{{' '.join(doc.title.split('_'))}}</a>
     </h1>
     <div class="post-time">
         <br>
