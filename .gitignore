@@ -1,5 +1,6 @@
 # ignore static folder here, a symbolic link will be created instead
 blog/static/
+blog/static
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
