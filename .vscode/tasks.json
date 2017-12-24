@@ -21,10 +21,10 @@
             "label": "push to server",
             "type": "shell",
             "windows": {
-                "command": "scp '${file}' deploy@tianjun.me:/home/deploy/blog-py/${relativeFile}",
+                "command": "scp '${file}' deploy@tianjun.me:/home/deploy/blog-py/${relativeFile}"
             },
             "linux": {
-                "command": "scp '${file}' deploy@tianjun.me:/home/deploy/blog-py/${relativeFile}",
+                "command": "scp '${file}' deploy@tianjun.me:/home/deploy/blog-py/${relativeFile}"
             },
             "presentation": {
                 "reveal": "always"
