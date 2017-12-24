@@ -1,0 +1,1 @@
+exec /home/deploy/blog-py/env/bin/gunicorn run:app -b 0.0.0.0:8000 -w 4 --log-file /home/deploy/blog-py/gunicorn.log --access-logfile /home/deploy/blog-py/gunicorn_access.log --access-logformat '%(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s" "%({X-Real-IP}i)s"'

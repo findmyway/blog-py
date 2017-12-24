@@ -3,3 +3,4 @@ watchdog
 pypandoc
 beautifulsoup4
 redis
+gunicorn
