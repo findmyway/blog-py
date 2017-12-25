@@ -5,6 +5,11 @@ from .models import get_resources_url_path, random_slogan
 from .backward import OLD_TITLES
 
 
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
+
+
 @app.route('/')
 def home():
     titles = get_all_titles()
