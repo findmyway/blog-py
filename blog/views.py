@@ -1,5 +1,7 @@
 from . import app
 from flask import render_template, request, redirect, abort
+from datetime import datetime
+from rfeed import *
 from .syncdb import get_essay, get_all_titles, get_tag_links
 from .models import get_resources_url_path, random_slogan
 from .backward import OLD_TITLES
@@ -66,7 +68,24 @@ def old_about():
 
 @app.route('/rss')
 def rss():
-    return ""
+    items = []
+    for title in get_all_titles()[:5]:
+        doc = get_essay(title)
+        items.append(Item(
+            title=doc['title'],
+            link="https://tianjun.me/essays/" + title,
+            description=doc['body'],
+            author="Jun Tian",
+            guid=Guid(title),
+            pubDate=datetime.strptime(doc['update_time'], '%Y-%m-%d %H:%M:%S')))
+    feed = Feed(
+        title="Tian Jun",
+        link="https://tianjun.me/rss",
+        description="All about Tian Jun",
+        language="en-US",
+        lastBuildDate=datetime.now(),
+        items=items)
+    return feed.rss()
 
 
 @app.route('/rss/')
