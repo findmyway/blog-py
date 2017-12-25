@@ -14,6 +14,7 @@ def home():
     doc = get_essay(titles[0])
     return render_template(
         'essay.html',
+        url=request.base_url,
         doc=doc,
         page_title="Tian Jun",
         activate="essays",
@@ -23,12 +24,16 @@ def home():
 @app.route('/essays/<title>')
 def gen_essay(title):
     if title in OLD_TITLES:
-        return redirect('/essays/' + OLD_TITLES[title], 301)
+        return redirect(
+            '/essays/' + OLD_TITLES[title] + '?disqus_id=' + title,
+            301)
     doc = get_essay(title)
     if not doc:
         abort(404)
     return render_template(
         'essay.html',
+        url=request.base_url,
+        disqus_id=request.args.get('disqus_id', title),
         doc=doc,
         activate="essays",
         slogan=random_slogan(),
