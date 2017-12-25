@@ -37,6 +37,11 @@ def gen_essay(title):
         resources=get_resources_url_path(title))
 
 
+@app.route('/essays/<title>/')
+def old_gen_essay(title):
+    return redirect('/essays/' + title, 301)
+
+
 @app.route('/search')
 def search():
     tag = request.args.get('tag', '')
