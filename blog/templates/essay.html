@@ -13,7 +13,7 @@ Fight For Dream!
 {% if page_title is defined %}
 {{ page_title }}
 {% else %}
-{{ doc.title }}
+{{ ' '.join(doc.title.split('_'))}}
 {% endif %}
 </title>
 {% endblock %}
