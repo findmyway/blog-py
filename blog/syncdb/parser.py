@@ -1,7 +1,7 @@
 import os
 from bs4 import BeautifulSoup
 
-IMG_URL_PREFIX = '/static/essay_resources'
+RESOURCE_URL_PREFIX = '/static/essay_resources'
 KNOWN_LANGS = ['python', 'julia']
 
 
@@ -19,11 +19,16 @@ def refactor_code(soup):
                           for x in s['class']]
 
 
-def refactor_img_url(soup, title):
-    """add prefix to img"""
+def refactor_url(soup, title):
+    """add prefix to local resources"""
+    # img
     for s in soup.find_all('img'):
         if not s['src'].startswith('http'):
-            s['src'] = '/'.join([IMG_URL_PREFIX, title, s['src']])
+            s['src'] = '/'.join([RESOURCE_URL_PREFIX, title, s['src']])
+    # a href
+    for s in soup.find_all('a'):
+        if not s['href'].startswith('http'):
+            s['href'] = '/'.join([RESOURCE_URL_PREFIX, title, s['href']])
 
 
 def parse_html(filepath):
@@ -43,7 +48,7 @@ def parse_html(filepath):
         tags = tags.attrs['content']
 
     refactor_code(soup)
-    refactor_img_url(soup, title)
+    refactor_url(soup, title)
     body = soup.body.decode()
 
     return {'toc': toc, 'tags': tags, 'body': body}
