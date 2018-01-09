@@ -1,6 +1,6 @@
 # Why this repo?
 
-[About This Site](http://tianjun.me/essays/54)
+Checkout [About This Site](http://tianjun.me/essays/54).
 
 # Architecture
 
