@@ -36,16 +36,7 @@ class BlogEventHandler(FileSystemEventHandler):
         logging.debug('[Created] %s', event.src_path)
 
     def on_deleted(self, event):
-        if os.path.basename(event.src_path) == ESSAY_FILE_NAME:
-            title = os.path.basename(os.path.dirname(event.src_path))
-            try:
-                remove_essay(title)
-                logging.info('Deleted essay %s', event.src_path)
-            except Exception:
-                logging.error("Failed to delete %s",
-                              event.src_path, exc_info=True)
-        else:
-            logging.debug('[Deleted] %s', event.src_path)
+        logging.debug('[Deleted] %s', event.src_path)
 
     def on_modified(self, event):
         if os.path.basename(event.src_path) == ESSAY_FILE_NAME:
