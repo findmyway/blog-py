@@ -1,3 +1,7 @@
 {
-    "julia.executablePath": "D:\\workspace\\software\\Julia-0.6.2\\bin\\julia.exe"
+    "julia.executablePath": "D:\\workspace\\software\\Julia-0.6.2\\bin\\julia.exe",
+    "cSpell.words": [
+        "cj",
+        "kmainfont"
+    ]
 }
