@@ -8,11 +8,15 @@ def get_resources_url_path(title):
                              app.config['ESSAY_RESOURCE_FOLDER'],
                              title)
     if os.path.exists(essay_dir):
-        return [[f, '/'.join([app.static_url_path,
-                              app.config['ESSAY_RESOURCE_FOLDER'],
-                              title,
-                              f])]
-                for f in os.listdir(essay_dir)]
+        resources = []
+        for f in os.listdir(essay_dir):
+            f_path = '/'.join([app.static_url_path,
+                               app.config['ESSAY_RESOURCE_FOLDER'],
+                               title,
+                               f])
+            f = f + '/' if os.path.isdir(f_path) else f
+            resources.append((f, f_path))
+        return resources
     else:
         return []
 
