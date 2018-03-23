@@ -14,7 +14,7 @@ def get_resources_url_path(title):
                                app.config['ESSAY_RESOURCE_FOLDER'],
                                title,
                                f])
-            f = f + '/' if os.path.isdir(f_path) else f
+            f = f + '/' if os.path.isdir(os.path.join(essay_dir, f)) else f
             resources.append((f, f_path))
         return resources
     else:
