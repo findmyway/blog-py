@@ -23,6 +23,8 @@ def get_resources_url_path(title):
 
 def random_slogan():
     return random.choice([
-        'Any Similarity is Misleading',
-        'All Models are Wrong, but Some are Useful'
-         ])
+        'Any Similarity Is Misleading',
+        'All Models Are Wrong But Some Are Useful',
+        'A Goal Without A Plan Is Just A Wish',
+        'To Think Is To Forget Details, Generalize, Make Abstractions'
+    ])
